@@ -1,1 +1,1 @@
-This projec is in Thailand Innovation Awards 2024.
+This project is in Thailand Innovation Awards 2024.
