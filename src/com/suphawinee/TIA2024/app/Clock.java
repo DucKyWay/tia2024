@@ -8,13 +8,15 @@ public class Clock {
 	public static void main(String[] args) {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
         Runnable task = new Runnable() {
-            int hours = 1; // Set the countdown hours here
-            int minutes = 30; // Set the countdown minutes here
-            int seconds = 45; // Set the countdown seconds here
+            int hours = 0; //set
+            int minutes = 10; //set
+            int seconds = 0; //set
 
             @Override
             public void run() {
+            	
                 if (hours > 0 || minutes > 0 || seconds > 0) {
+                	
                     if (seconds == 0) {
                         if (minutes == 0) {
                             hours--;
@@ -27,6 +29,7 @@ public class Clock {
                     } else {
                         seconds--;
                     }
+                    
                     System.out.println(String.format("%02d:%02d:%02d", hours, minutes, seconds) + " remaining");
                 } else {
                     System.out.println("Time's up!");

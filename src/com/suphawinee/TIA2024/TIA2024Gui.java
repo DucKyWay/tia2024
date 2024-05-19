@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.SpringLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Color;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
@@ -22,31 +24,31 @@ public class TIA2024Gui {
 	private JTextField inputMinutes;
 	private JTextField inputSeconds;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TIA2024Gui window = new TIA2024Gui(instance);
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					TIA2024Gui window = new TIA2024Gui(instance);
+//					window.frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 	
 	//create
 
 	public TIA2024Gui(TIA2024 instance) {
-//		this.instance = instance;
+		this.instance = instance;
 		
-		initialize();
+//		initialize();
 		
 	}
 
 	public void start() {
-//		initialize();
-//		frame.setVisible(true);
+		initialize();
+		frame.setVisible(true);
 	}
 
 	//initialize
@@ -110,6 +112,22 @@ public class TIA2024Gui {
 		btnStart.setBounds(237, 376, 105, 23);
 		frame.getContentPane().add(btnStart);
 		
+		btnStart.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int hours = getInputHours();
+                int minutes = getInputMinutes();
+                int seconds = getInputSeconds();
+                int totalSeconds = (hours * 3600) + (minutes * 60) + seconds;
+
+                // Update the countdown
+                setCountdownString(totalSeconds + " s");
+
+                System.out.println("Countdown set to: " + totalSeconds + " seconds");
+			}
+		});
+		
 	}
 	
 	public void setCountdownString(String message) {
@@ -138,20 +156,3 @@ public class TIA2024Gui {
 	
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
